@@ -1,0 +1,19 @@
+apiVersion: apps/v1     # 쿠버네티스 API 버전 (apps/v1은 어플리케이션 버전1을 의미)
+kind: Deployment        # 쿠버네티스 리소스 종류를 나타냄
+metadata:               # 디플로이먼트에 대한 메타데이터 정의
+  name: onulgo-front-deployment # 디플로이먼트 이름 지정
+spec:                   # 디플로이먼트의 설정 정의
+  replicas: 3             # 실행할 컨테이너 개수 지정
+  selector:               # 디플로이먼트가 관리하는 Pod를 선택하는 방법을 정의
+    matchLabels:            # Pod 레이블과 일치하는 컨테이너 레이블 지정
+      app: onulgo-front-app    
+  template:               # 디플로이먼트에서 실행될 Pod 템플릿을 정의
+    metadata:               # Pod 템플릿에 대한 메타데이터를 정의
+      labels:                 # Pod 템플릿에 레이블을 지정
+        app: onulgo-front-app         # selector.matchLabels.app과 일치해야 함
+    spec:                 # Pod 템플릿의 설정 정의
+      containers:           # Pod 템플릿에서 실행될 컨테이너 정의
+      - name: onulgo-front    # 컨테이너 이름 지정
+        image: onulgo:frontend  # 실행할 컨테이너 이미지 지정
+        ports:                # 컨테이너가 노출하는 포트 지정
+        - containerPort: 5173   # 컨테이너 내부에서 사용하는 포트 지정

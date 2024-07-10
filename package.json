@@ -1,0 +1,37 @@
+{
+  "name": "onulgo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.11.2",
+    "@popperjs/core": "^2.11.8",
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "flowbite-vue": "^0.1.4",
+    "pinia": "^2.1.7",
+    "primevue": "^3.52.0",
+    "v-calendar": "^3.1.2",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "vue3-carousel": "^0.3.3",
+    "vue3-cookies": "^1.0.6"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.4.47",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "vite": "^5.2.8",
+    "vite-plugin-vue-devtools": "^7.0.25"
+  }
+}
