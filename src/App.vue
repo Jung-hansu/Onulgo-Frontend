@@ -3,6 +3,7 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
+    <h1>Jenkins build testing...</h1>
     <RouterView />
 </template>
 
