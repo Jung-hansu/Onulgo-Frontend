@@ -6,7 +6,7 @@ const { cookies } = useCookies();
 function getReviewList() {
   const access_token = cookies.get("access_token");
   return axios
-    .get("http://localhost:80/reviews", {
+    .get(`${import.meta.env.VITE_BACKEND_URL}/reviews`, {
       headers: {
         Authorization: "Bearer " + access_token,
       },
@@ -15,7 +15,7 @@ function getReviewList() {
 }
 
 function getReview(review_id) {
-  const url = "http://localhost:80/reviews/detail/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/detail/` + review_id;
   const access_token = cookies.get("access_token");
   // console.log(url);
   return axios
@@ -33,7 +33,7 @@ function getReview(review_id) {
 function deleteReview(review_id) {
   const access_token = cookies.get("access_token");
 
-  const url = "http://localhost:80/reviews/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + review_id;
 
   return axios.delete(url, {
     headers: {
@@ -43,7 +43,7 @@ function deleteReview(review_id) {
 }
 
 function addComment(review_id, commentContent) {
-  const url = "http://localhost:80/comments";
+  const url = `${import.meta.env.VITE_BACKEND_URL}/comments`;
 
   const access_token = cookies.get("access_token");
 
@@ -62,7 +62,7 @@ function addComment(review_id, commentContent) {
 }
 
 function modifyReview(review_id, title, content) {
-  const url = "http://localhost:80/reviews";
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews`;
   const access_token = cookies.get("access_token");
   return axios.put(
     url,
@@ -80,7 +80,7 @@ function modifyReview(review_id, title, content) {
 }
 
 function createReview(plan_id, title, content) {
-  const url = "http://localhost:80/reviews/" + plan_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + plan_id;
   console.log(url);
   const access_token = cookies.get("access_token");
   return axios.post(
@@ -98,7 +98,7 @@ function createReview(plan_id, title, content) {
 }
 
 async function uploadImages(review_id, form_data) {
-  const url = "http://localhost:80/reviews/" + review_id + "/image";
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + review_id + "/image";
   const access_token = cookies.get("access_token");
 
   return axios.post(url, form_data, {
@@ -110,7 +110,7 @@ async function uploadImages(review_id, form_data) {
 }
 
 async function deleteImages(review_id, images) {
-  const url = "http://localhost:80/reviews/" + review_id + "/image";
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + review_id + "/image";
   const access_token = cookies.get("access_token");
 
   console.log(images);
@@ -125,7 +125,7 @@ async function deleteImages(review_id, images) {
 }
 
 function updateCommentCount(review_id) {
-  const url = "http://localhost:80/reviews/" + "comment" + "/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + "comment" + "/" + review_id;
   const access_token = cookies.get("access_token");
   return axios.put(
     url,
@@ -139,7 +139,7 @@ function updateCommentCount(review_id) {
 }
 
 function updateLikeCount(review_id) {
-  const url = "http://localhost:80/reviews/" + "like" + "/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + "like" + "/" + review_id;
   const access_token = cookies.get("access_token");
   return axios.put(
     url,
@@ -153,7 +153,7 @@ function updateLikeCount(review_id) {
 }
 
 function updateScrapCount(review_id) {
-  const url = "http://localhost:80/reviews/" + "scrap" + "/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + "scrap" + "/" + review_id;
   const access_token = cookies.get("access_token");
   return axios.put(
     url,
@@ -167,7 +167,7 @@ function updateScrapCount(review_id) {
 }
 
 function addLike(review_id) {
-  const url = "http://localhost:80/reviews/" + "like" + "/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + "like" + "/" + review_id;
   const access_token = cookies.get("access_token");
   console.log("addLike");
   return axios.post(
@@ -182,7 +182,7 @@ function addLike(review_id) {
 }
 
 function deleteLike(review_id) {
-  const url = "http://localhost:80/reviews/" + "like" + "/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + "like" + "/" + review_id;
   const access_token = cookies.get("access_token");
   console.log("deleteLike");
   return axios.delete(url, {
@@ -193,7 +193,7 @@ function deleteLike(review_id) {
 }
 
 function addScrap(review_id) {
-  const url = "http://localhost:80/reviews/" + "scrap" + "/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + "scrap" + "/" + review_id;
   const access_token = cookies.get("access_token");
   console.log("addScrap");
   return axios.post(
@@ -208,7 +208,7 @@ function addScrap(review_id) {
 }
 
 function deleteScrap(review_id) {
-  const url = "http://localhost:80/reviews/" + "scrap" + "/" + review_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/` + "scrap" + "/" + review_id;
   const access_token = cookies.get("access_token");
   console.log("deleteScrap");
   return axios.delete(url, {
@@ -219,7 +219,7 @@ function deleteScrap(review_id) {
 }
 
 function updateCommentLikecount(comment_id) {
-  const url = "http://localhost:80/comments/" + "like" + "/" + comment_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/comments/` + "like" + "/" + comment_id;
   const access_token = cookies.get("access_token");
   return axios.put(
     url,
@@ -233,7 +233,7 @@ function updateCommentLikecount(comment_id) {
 }
 
 function addCommentLike(comment_id) {
-  const url = "http://localhost:80/comments/" + "like" + "/" + comment_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/comments/` + "like" + "/" + comment_id;
   const access_token = cookies.get("access_token");
   console.log("addCommentLike");
   return axios.post(
@@ -247,7 +247,7 @@ function addCommentLike(comment_id) {
   );
 }
 function deleteCommentLike(comment_id) {
-  const url = "http://localhost:80/comments/" + "like" + "/" + comment_id;
+  const url = `${import.meta.env.VITE_BACKEND_URL}/comments/` + "like" + "/" + comment_id;
   const access_token = cookies.get("access_token");
   console.log("deleteCommentLike");
   return axios.delete(url, {
@@ -258,7 +258,7 @@ function deleteCommentLike(comment_id) {
 }
 
 function getPopularReviews() {
-  const url = "http://localhost:80/reviews/popular";
+  const url = `${import.meta.env.VITE_BACKEND_URL}/reviews/popular`;
   const access_token = cookies.get("access_token");
 
   return axios

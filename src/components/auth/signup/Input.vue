@@ -90,7 +90,7 @@ function join() {
     isValid.value.check_btn
   ) {
     axios
-      .post("http://localhost:80/users", userInfo.value)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/users`, userInfo.value)
       .then((res) => {
         console.log(res);
         router.replace("login");
@@ -110,7 +110,7 @@ function check() {
   isValid.value.check_btn = true;
 
   axios
-    .get("http://localhost:80/check/" + userInfo.value.email)
+    .get(`${import.meta.env.VITE_BACKEND_URL}/check/` + userInfo.value.email)
     .then((res) => {
       console.log(res.data);
       isValid.value.email_duplicate = res.data;

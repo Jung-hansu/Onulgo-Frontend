@@ -32,7 +32,7 @@ const dateFormat = (date) => {
 
 const deletePlan = () => {
   if (confirm("정말 일정을 삭제하시겠습니까?")) {
-    axios.delete(`http://localhost/plans/${planId}`, authHeader).then(() => router.push({ name: "planList" }));
+    axios.delete(`${import.meta.env.VITE_BACKEND_URL}/plans/${planId}`, authHeader).then(() => router.push({ name: "planList" }));
   }
 };
 
@@ -42,7 +42,7 @@ const modifyPlan = () => {
 };
 
 onMounted(() => {
-  axios.get(`http://localhost/plans/${planId}`, authHeader).then(({ data }) => {
+  axios.get(`${import.meta.env.VITE_BACKEND_URL}/plans/${planId}`, authHeader).then(({ data }) => {
     const recievedAttrs = JSON.parse(data.attractions);
 
     plan.value = data;

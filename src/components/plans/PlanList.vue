@@ -25,7 +25,7 @@ const createPlan = () => {
 
 const deletePlan = (planId) => {
   if (confirm("정말 일정을 삭제하시겠습니까?")) {
-    axios.delete(`http://localhost/plans/${planId}`, authHeader).then(loadPlans);
+    axios.delete(`${import.meta.env.VITE_BACKEND_URL}/plans/${planId}`, authHeader).then(loadPlans);
   }
 };
 
@@ -43,7 +43,7 @@ const dateFormat = (date) => {
 };
 
 const loadPlans = () => {
-  axios.get("http://localhost/users/plans", authHeader).then(({ data }) => {
+  axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/plans`, authHeader).then(({ data }) => {
     planList.value = [];
     for (let plan of data) {
       planList.value.push(plan);

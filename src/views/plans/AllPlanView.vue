@@ -27,7 +27,7 @@ const dateFormat = (date) => {
 
 onMounted(() => {
   sessionStorage.removeItem("plan");
-  axios.get("http://localhost/plans", authHeader).then(({ data }) => {
+  axios.get(`${import.meta.env.VITE_BACKEND_URL}/plans`, authHeader).then(({ data }) => {
     planList.value = [];
     for (let plan of data) {
       planList.value.push(plan);

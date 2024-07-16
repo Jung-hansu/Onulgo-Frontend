@@ -8,7 +8,7 @@ function getPrompts() {
   const access_token = cookies.get("access_token");
 
   return axios
-    .get("http://localhost:80/ai/prompts")
+    .get(`${import.meta.env.VITE_BACKEND_URL}/ai/prompts`)
     .then((response) => {
       console.log(response.data);
       return response.data;

@@ -60,7 +60,7 @@ const dateTimeFormat = (date) => {
 const addParticipant = () => {
   if (addedUser.value !== "") {
     axios
-      .get(`http://localhost/users/find/${addedUser.value}`, authHeader)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/users/find/${addedUser.value}`, authHeader)
       .then((response) => response.data)
       .then((user) => {
         if (user) {
@@ -132,9 +132,9 @@ const savePlan = () => {
     return alert("여행 이름과 여행 소개를 모두 작성해 주세요.");
   }
   saveDateRange().then((finalPlan) => {
-    axios.put("http://localhost/plans", finalPlan, authHeader).then((response) => {
+    axios.put(`${import.meta.env.VITE_BACKEND_URL}/plans`, finalPlan, authHeader).then((response) => {
       if (response.status === 200) {
-        axios.put(`http://localhost/plans/${finalPlan.plan_id}/join`, participantChange.value, authHeader).then(() => {
+        axios.put(`${import.meta.env.VITE_BACKEND_URL}/plans/${finalPlan.plan_id}/join`, participantChange.value, authHeader).then(() => {
           sessionStorage.removeItem("plan");
           sessionStorage.removeItem("attractions");
           sessionStorage.removeItem("accommodations");
@@ -151,7 +151,7 @@ onMounted(() => {
   if (sessionStorage.getItem("plan")) {
     plan.value = JSON.parse(sessionStorage.getItem("plan"));
   } else {
-    axios.get(`http://localhost/plans/${planId}`, authHeader).then(({ data }) => {
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/plans/${planId}`, authHeader).then(({ data }) => {
       plan.value = data;
       beforeRange.value.start = plan.value.start_date;
       beforeRange.value.end = plan.value.end_date;

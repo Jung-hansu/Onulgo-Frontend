@@ -88,7 +88,7 @@ onMounted(() => {
     };
   }
 
-  axios.get("http://localhost/users/plans", authHeader).then(({ data }) => {
+  axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/plans`, authHeader).then(({ data }) => {
     for (let plan of data) {
       if (plan.plan_id == planId) {
         continue;
@@ -104,7 +104,7 @@ watch(
     if (props.participants) {
       const participants = props.participants.map((p) => p.user_id).join(",");
       axios
-        .get("http://localhost/users/plans/dates", { params: { participants }, headers: authHeader.headers })
+        .get(`${import.meta.env.VITE_BACKEND_URL}/users/plans/dates`, { params: { participants }, headers: authHeader.headers })
         .then(({ data }) => {
           const planSet = new Set();
 

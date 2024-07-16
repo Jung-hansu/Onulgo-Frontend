@@ -65,7 +65,7 @@ const inputCls = "border-b border-gray-200 w-full lg:w-[40vw]";
 const addParticipant = () => {
   if (addedUser.value !== "") {
     axios
-      .get(`http://localhost/users/find/${addedUser.value}`, authHeader)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/users/find/${addedUser.value}`, authHeader)
       .then((response) => response.data)
       .then((user) => {
         console.log(user);
@@ -124,7 +124,7 @@ const savePlan = () => {
     return alert("여행 이름과 여행 소개를 모두 작성해 주세요.");
   }
   saveDateRange().then((finalPlan) => {
-    axios.post("http://localhost/plans", finalPlan, authHeader).then((response) => {
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/plans`, finalPlan, authHeader).then((response) => {
       if (response.status === 201) {
         sessionStorage.removeItem("plan");
         sessionStorage.removeItem("attractions");

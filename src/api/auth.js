@@ -20,7 +20,7 @@ function checkToken() {
     // }
     
     
-    return axios.get("http://localhost:80/check", {
+    return axios.get(`${import.meta.env.VITE_BACKEND_URL}/check`, {
         headers: {
             "Authorization": "Bearer " + access_token,
         }
@@ -44,7 +44,7 @@ function reIssue() {
 function logout(router) {
 
     const access_token = cookies.get("access_token");
-    axios.get("http://localhost:80/logout", {
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
         headers: {
             "Authorization": "Bearer " + access_token,
         }
@@ -60,7 +60,7 @@ function logout(router) {
 
 function login(router, email, password) {
     axios
-      .post("http://localhost:80/login", {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
         email,
         password,
       })
@@ -84,7 +84,7 @@ function login(router, email, password) {
   }
 
 function findPassword(name, email) { 
-    return axios.post("http://localhost:80/find/password", {
+    return axios.post(`${import.meta.env.VITE_BACKEND_URL}/find/password`, {
         name,
         email,
     }).then((response) => { 
@@ -93,7 +93,7 @@ function findPassword(name, email) {
 }
 
 function findEmail(name, phoneNumber) { 
-    return axios.post("http://localhost:80/find/email", {
+    return axios.post(`${import.meta.env.VITE_BACKEND_URL}/find/email`, {
         name: name,
         phone_number: phoneNumber,
     }).then((response) => { 
